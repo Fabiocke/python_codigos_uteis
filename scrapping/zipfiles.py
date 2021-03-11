@@ -6,15 +6,13 @@ def read_csv_from_zip(caminho, arquivo, sep=';'):
     r=requests.get(caminho, stream=True)
     zf = zipfile.ZipFile(io.BytesIO(r.content))
     arquivo=zf.open(arquivo)
-    
     file = open(arquivo) if type(arquivo)==str else arquivo
     lines = file.readlines()
-    if type(lines[0])==bytes: lines=[str(i.strip())[2:-1] for i in lines]
+    if type(lines[0])==bytes: lines=[i.strip().decode('ISO-8859-1') for i in lines]
     file.close()
     values = [i.replace('\n','').strip().split(sep) for i in lines]
     df = pd.DataFrame(values[1:], columns=values[0])
     return df
-
 
 
 # le um arquivo  xlsx dentro de um zip na internet e retorna um dataframe ou um excelfile
