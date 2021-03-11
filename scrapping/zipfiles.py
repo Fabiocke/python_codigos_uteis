@@ -18,7 +18,7 @@ def read_csv_from_zip(caminho, arquivo, sep=';'):
 
 
 # le um arquivo  xlsx dentro de um zip na internet e retorna um dataframe ou um excelfile
-def read_csv_from_zip(caminho, arquivo, sep=';', excel_file=0):
+def read_xlsx_from_zip(caminho, arquivo, sep=';', excel_file=0):
     import requests, zipfile, io, requests
     import pandas as pd
     r=requests.get(caminho, stream=True)
