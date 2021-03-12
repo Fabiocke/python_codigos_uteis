@@ -1,0 +1,5 @@
+pandas
+flask
+bs4
+scipy
+
