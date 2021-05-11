@@ -1,6 +1,7 @@
 # função para exportar dataframes do pandas para o excel
 	
 def export_excel(local, dfs, plans=False):
+    import pandas as pd
     if '\\' not in local:
         import os
         local = os.environ['USERPROFILE'] + '\Desktop\\'+local

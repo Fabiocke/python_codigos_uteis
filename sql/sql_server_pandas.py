@@ -75,7 +75,6 @@ class Sqlx:
 
         campos, valores = tab[0], np.array(tab[1])
         
- #       tipos = [np.array(valores[:,i].tolist()).dtype.char for i in range(valores.shape[1])]
         valores = valores.tolist()  
         
         if self.table_exist(nome):
@@ -95,7 +94,12 @@ class Sqlx:
                 
 
 
-
+## Exporta um dataframe muito grande para um banco no sql server usando a classe Sqlx
+def export_sql(nome, df, con, existe = 'fail', chunk=100000):
+    dfs = [df[i:i+chunk] for i in range(0,len(df),chunk)]
+    for i in dfs:
+        Sqlx(con).to_sql(nome,i,existe)
+        existe='append'
 
 
 
