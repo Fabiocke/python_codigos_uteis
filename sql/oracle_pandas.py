@@ -1,5 +1,4 @@
-
-
+import pandas as pd
 ## função usada para importar tabelas entre do oracle para o pandas
 ## de forma muito mais rápida que o método original do pandas
 
